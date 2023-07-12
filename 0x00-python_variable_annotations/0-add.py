@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""task 0 adds
+"""This module contains a function that has type annotation
+on its parameters and return value
 """
 
 
 def add(a: float, b: float) -> float:
-    """adds floats and returns float
-    """
+    """Returns sum of a and b"""
     return a + b
