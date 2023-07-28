@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""UNit testing.
+"""Unit testing.
 """
 
 import unittest
@@ -9,6 +9,7 @@ from utils import (
     memoize,
 )
 from parameterized import parameterized
+from unittest.mock import Mock, patch
 
 class TestAccessNestedMap(unittest.TestCase):
     """Tests the access_nested_map function."""
@@ -34,3 +35,20 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(exception):
             access_nested_map(nested_map, path)
             
+class TestGetJson(unittest.TestCase):
+    """Tests the `get_json` function."""
+    @parameterized.expand(
+        [
+            ('http://example.com', {'payload': True}),
+            ('http://holberton.io', {'payload': False})
+        ]
+    )
+    def test_get_json(self, url, expected_output):
+        """Tests get_json's output."""
+        mock_response = Mock()
+        mock_response.json.return_value = expected_output
+        with patch('requests.get', return_value = mock_response):
+            self.assertEqual(get_json(), expected_output)
+        
+         
+        
