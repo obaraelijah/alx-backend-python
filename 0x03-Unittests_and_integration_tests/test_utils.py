@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Unit testing.
 """
-
 import unittest
 from utils import (
     access_nested_map,
@@ -34,6 +33,7 @@ class TestAccessNestedMap(unittest.TestCase):
         """Tests access_nested_map's exception raising."""
         with self.assertRaises(exception):
             access_nested_map(nested_map, path)
+    
             
 class TestGetJson(unittest.TestCase):
     """Tests the `get_json` function."""
